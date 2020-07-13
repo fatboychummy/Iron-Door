@@ -1,7 +1,7 @@
 # Iron-Door
 Iron Door is the best program you can use to protect your valuables. 
 
-Iron Door has secure and interception proof wireless capabilities that allow you to hide yourself, or your valuables securly.
+Iron Door has secure and interception proof wireless capabilities that allow you to hide yourself, or your valuables securely.
 
 Never be afraid and always be secure with Iron Door.
 
