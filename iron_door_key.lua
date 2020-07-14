@@ -19,6 +19,7 @@ function request_iron_door()
     if settings.get("lock_id") == nil then
         print("Usage: irondoorkey <lock id> <password>")
         return
+    end
     modem.transmit(lock_port, port, settings.get("password"))
 end
  
