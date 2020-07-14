@@ -13,9 +13,9 @@ end
  
  
 function salt()
-    length = 20
-    string = ""
-    keys = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"}
+    local length = 20
+    local string = ""
+    local keys = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"}
     for i = 1, length do
         upper = math.random(1,2)
         if upper == 1 then
@@ -46,7 +46,7 @@ end
  
  
 function output_to_door()
-    open_door = not settings.get("open")
+    local open_door = not settings.get("open")
     if settings.get("behavior") == "button" then
         button()
     else
@@ -102,7 +102,7 @@ end
  
  
 function save_lock()
-    salt = salt()
+    local salt = salt()
     settings.set("salt", salt)
     settings.set("password", strutils.SHA1(salt .. args[1]))
     settings.set("behavior", args[2])
