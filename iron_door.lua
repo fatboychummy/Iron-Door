@@ -5,9 +5,10 @@ os.loadAPI("strutils")
 -- wget https://raw.githubusercontent.com/Xtansia/Lua-String-Utils-API/master/StrUtilsAPI.lua strutils
  
  
-function get_label()
-    computer = peripheral.find("computer")
-    return computer.getLabel()
+function print_credits()
+    print("Iron Door by sunsetdev")
+    print("https://github.com/sunset-developer")
+    print("------------------------------------")
 end
  
  
@@ -58,6 +59,7 @@ end
 function local_init()
     while true do  
         term.clear()  
+        print_credits()
         print("Please enter your password.")    
         if strutils.SHA1(settings.get("salt") .. io.read()) == settings.get("password") then
             output_to_door()        
@@ -69,6 +71,7 @@ end
 function wireless_init()
     modem.open(port)
     term.clear()
+    print_credits()
     print("This door is now listening for access requests.")
     while true do
         event, side, frequency, replyFrequency, message, distance = os.pullEvent("modem_message")
@@ -78,17 +81,6 @@ function wireless_init()
             if message == settings.get("password") then output_to_door() end
         end
     end
-end
- 
- 
-function save_lock()
-    salt = salt()
-    settings.set("salt", salt)
-    settings.set("password", strutils.SHA1(salt .. args[1]))
-    settings.set("behavior", args[2])
-    settings.set("output_side", args[3])
-    settings.set("wireless", to_boolean(args[4]))
-    settings.set("open", false)
 end
  
  
@@ -106,6 +98,17 @@ function init()
     else
         local_init()
     end
+end
+ 
+ 
+function save_lock()
+    salt = salt()
+    settings.set("salt", salt)
+    settings.set("password", strutils.SHA1(salt .. args[1]))
+    settings.set("behavior", args[2])
+    settings.set("output_side", args[3])
+    settings.set("wireless", to_boolean(args[4]))
+    settings.set("open", false)
 end
  
  
